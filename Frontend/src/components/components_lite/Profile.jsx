@@ -27,8 +27,8 @@ const Profile = () => {
                 src={
                   user?.profile?.profilePhoto 
                     ? (user.profile.profilePhoto.startsWith('http') 
-                        ? user.profile.profilePhoto 
-                        : `http://localhost:5001${user.profile.profilePhoto}`)
+                      ? user.profile.profilePhoto 
+                      : `https://job-portal-backend-fdsl.onrender.com${user.profile.profilePhoto}`)
                     : "https://via.placeholder.com/150"
                 }
                 alt="@shadcn"

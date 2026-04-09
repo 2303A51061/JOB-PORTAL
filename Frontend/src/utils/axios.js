@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create axios instance with default configuration
 const api = axios.create({
-  baseURL: 'http://localhost:5001/api',
+  baseURL: 'https://job-portal-backend-fdsl.onrender.com/api',
   withCredentials: true, // Send cookies with all requests
   headers: {
     'Content-Type': 'application/json',
