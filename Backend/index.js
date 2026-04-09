@@ -44,6 +44,20 @@ const PORT = process.env.PORT || 5001;
 
  
 //api's
+app.get("/", (req, res) => {
+  res.json({
+    message: "Welcome to DreamHire Job Portal API",
+    status: "Server is running successfully",
+    version: "1.0.0",
+    endpoints: {
+      user: "/api/user",
+      company: "/api/company", 
+      job: "/api/job",
+      application: "/api/application",
+      auth: "/api/auth"
+    }
+  });
+});
 
 app.use("/api/user", userRoute);
 app.use("/api/company", companyRoute);
