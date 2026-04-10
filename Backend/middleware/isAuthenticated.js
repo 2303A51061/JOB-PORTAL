@@ -7,7 +7,9 @@ const authenticateToken = (req, res, next) => {
     console.log("Request cookies:", req.cookies);
     console.log("Cookie header:", req.headers.cookie);
     
-    const token = req.cookies.token;
+    const authHeader = req.headers.authorization;
+    const tokenFromHeader = authHeader && authHeader.startsWith('Bearer ') ? authHeader.split(' ')[1] : null;
+    const token = req.cookies.token || tokenFromHeader;
     console.log("Token from cookies:", token);
     
     if (!token) {

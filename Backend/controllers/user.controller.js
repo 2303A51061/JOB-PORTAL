@@ -134,8 +134,8 @@ export const login = async (req, res) => {
     // Set token in cookie
     res.cookie('token', token, {
       httpOnly: true,
-      secure: false, // Keep false for localhost development
-      sameSite: 'lax', // Changed from 'none' to 'lax' for localhost
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'none',
       maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
 
@@ -184,8 +184,8 @@ export const logout = async (req, res) => {
     // Clear the token cookie with same settings as login
     res.clearCookie('token', {
       httpOnly: true,
-      secure: false,
-      sameSite: 'lax', // Changed from 'none' to 'lax' to match login
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'none',
     });
     
     return res.status(200).json({
@@ -500,8 +500,8 @@ export const completeRegistration = async (req, res) => {
       // Set authentication cookie
       res.cookie('token', token, {
         httpOnly: true,
-        secure: false, // Keep false for localhost development
-        sameSite: 'lax', // Changed from 'none' to 'lax' for localhost
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'none',
         maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
       });
 
@@ -546,12 +546,12 @@ export const completeRegistration = async (req, res) => {
       );
 
       // Set authentication cookie
-      res.cookie('token', token, {
-        httpOnly: true,
-        secure: false, // Keep false for localhost development
-        sameSite: 'lax', // Changed from 'none' to 'lax' for localhost
-        maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
-      });
+        res.cookie('token', token, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: 'none',
+          maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+        });
 
       // Return user data and success message
       return res.status(201).json({
